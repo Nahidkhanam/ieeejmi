@@ -24,7 +24,7 @@ const route = [
 
 function Navbar() {
   return (
-    <div className="flex pl-10 pt-9 font-body absolute">
+    <div className="flex pl-10 pt-9 font-body absolute z-50">
       <img className="w-32" src={IEEEJMI} alt="IEEE JMI" />
 
       <div className="flex gap-4 ml-7">
