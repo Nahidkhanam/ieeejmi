@@ -5,6 +5,7 @@ import Home from "./views/Home";
 import Blogs from "./views/Blogs";
 import Layout from "./components/Layout";
 import Events from "./views/Events/events";
+import Teams from "./views/Teams";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,6 +18,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/team" element={<Teams />} />
           </Route>
         </Routes>
       </BrowserRouter>
