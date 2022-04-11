@@ -1,7 +1,7 @@
 import React from "react";
 import HomeBg from "../../../assets/images/home/home_bg.jpg";
 import { Slide, Fade } from "react-reveal";
-
+import { FaAngleDown } from "react-icons/fa";
 function Landing() {
   const bgRef = React.useRef(null);
 
@@ -35,6 +35,14 @@ function Landing() {
             </Slide>
           </div>
         </Slide>
+      </div>
+      <div className={`text-1xl font-bold  px-14 transition-all `}>
+        <button className={`bg-white hover:bg-gray-300 py-4 px-14 rounded-full sm-flex-items-centre` }>
+          Contact Us
+        </button>
+      </div>
+      <div className={`flex items-centre`}>
+        <FaAngleDown size={50} className={`text-white  animate-bounce m-auto`} />
       </div>
     </div>
   );
