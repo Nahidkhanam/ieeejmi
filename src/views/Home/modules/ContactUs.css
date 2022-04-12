@@ -1,21 +1,27 @@
 .contact-div{
     background-color: #000;
-    background-image: -webkit-linear-gradient(70deg, #000 75%, #E4E9FD 25%);
-    border: 1px solid;
-    border-color: red;
-
-    padding: 0 0 5% 3%;
+    background-image: -webkit-linear-gradient(70deg, #000 75%, #fff 25%);
+    padding: 0 5% 5% 5%;
+    
+}
+.contents-lol{
+    margin: 3%;
+    border: 2px dashed;
+    border-color: grey;
+    padding: 5%;
 }
 .contact-head{
     color: #fff;
     font-size:2.5rem;
     margin: 3% 0;
 }
-.textarea{height: 18rem}
+.textarea{height: 19rem}
 .contact-info{width: 100% ;padding-left:2% ;}
 
 .contact-info:focus{
     outline: none;
 }
+
+
 
 .info-div{color: #fff}
