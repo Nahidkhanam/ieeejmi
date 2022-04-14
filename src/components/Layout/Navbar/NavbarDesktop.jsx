@@ -1,28 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { NavLink, useLocation, useResolvedPath } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 import IEEEJMI from "../../../assets/logo/IEEEJMI.svg";
-
-const route = [
-  {
-    path: "/",
-    text: "Home",
-  },
-  {
-    path: "/team",
-    text: "Team",
-  },
-  {
-    path: "/blogs",
-    text: "Blogs",
-  },
-  {
-    path: "/events",
-    text: "Events",
-  },
-];
+import route from "../routes";
 
 function Navbar() {
+  const navigation = useNavigate();
   const [Navinfo, setNavinfo] = useState({
     width: 0,
     height: 0,
@@ -31,13 +14,13 @@ function Navbar() {
   });
 
   const location = useLocation();
+
   console.log(location);
 
   const ref = useRef(null);
 
   useEffect(() => {
-    console.log("REf", ref.current);
-
+    console.log("Current : ", ref.current);
     if (ref.current) {
       const rect = ref.current.getBoundingClientRect();
       console.log("Rect", rect);
@@ -45,14 +28,21 @@ function Navbar() {
         width: rect.width,
         height: rect.height,
         x: rect.x,
-        y: rect.y,
+        y: 50.6,
       });
     }
-  }, [ref.current]);
+  }, [ref.current, location]);
 
   return (
     <div className="pl-10 pt-9 font-body absolute z-50 hidden md:flex">
-      <img className="w-32" src={IEEEJMI} alt="IEEE JMI" />
+      <img
+        className="w-32"
+        src={IEEEJMI}
+        alt="IEEE JMI"
+        onClick={() => {
+          navigation("/");
+        }}
+      />
 
       <div
         className="bg-black rounded-full transition-all"
@@ -76,9 +66,6 @@ function Navbar() {
               };
             }}
             ref={location.pathname === item.path ? ref : null}
-            onClick={(e) => {
-              ref.current = e.target;
-            }}
           >
             <span>{item.text}</span>
           </NavLink>

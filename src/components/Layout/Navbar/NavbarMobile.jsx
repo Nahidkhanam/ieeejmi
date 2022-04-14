@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import IEEEJMI from "../../../assets/logo/IEEEJMI.svg";
 import { Link } from "react-router-dom";
+import route from "../routes";
 
 function NavbarMobile() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,11 +16,11 @@ function NavbarMobile() {
       <div
         class="absolute transition-all bg-white top-10 w-4/5 left-0 overflow-hidden "
         style={{
-          height: isOpen ? `${60 * Nav.length}px` : "0",
+          height: isOpen ? `${60 * route.length}px` : "0",
         }}
       >
         <ul className="list-none mt-1">
-          {Nav.map((_, i) => {
+          {route.map((_, i) => {
             return (
               <Link to={_.path}>
                 <li
@@ -36,24 +37,6 @@ function NavbarMobile() {
     );
   }
 
-  const Nav = [
-    {
-      path: "/",
-      text: "Home",
-    },
-    {
-      path: "/team",
-      text: "Team",
-    },
-    {
-      path: "/blogs",
-      text: "Blogs",
-    },
-    {
-      path: "/events",
-      text: "Events",
-    },
-  ];
   return (
     <div>
       <div className="sm:hidden nav shadow-2xl z-50 fixed w-screen flex bg-white  font-body items-center justify-center  ">
