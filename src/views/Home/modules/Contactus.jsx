@@ -1,5 +1,4 @@
 import React from "react";
-import "tw-elements";
 import bgMask from "../../../assets/images/home/contactus/whitecorner.svg";
 
 function ContactUs() {
