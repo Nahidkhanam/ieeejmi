@@ -6,10 +6,15 @@ function ContactUs() {
     <div className="font-body">
       <img src={bgMask} alt="bgmask" className="absolute" />
       <div className="bg-black w-full py-28">
-        <p className="text-white ml-32 text-4xl py-8">Contact Us</p>
-        <div className="flex w-full">
-          <div className="w-1/2 flex flex-col items-center">
-            <form method="POST" className="flex flex-col items-start w-2/3">
+        <p className="text-white md:ml-32 text-center md:text-left text-4xl py-8">
+          Contact Us
+        </p>
+        <div className="flex flex-col md:flex-row w-full">
+          <div className="w-full md:w-1/2 flex flex-col items-center">
+            <form
+              method="POST"
+              className="flex flex-col items-start md:w-2/3 mx-3 md:mx-0"
+            >
               <div className="flex flex-col items-start bg-white w-full p-3 rounded-sm">
                 <input
                   type="text"
@@ -35,7 +40,7 @@ function ContactUs() {
               </button>
             </form>
           </div>
-          <div className="w-1/2 text-white">
+          <div className="md:w-1/2 flex flex-col items-center md:items-start mx-4 md:mx-0 text-white">
             <p className="opacity-70 my-1">ieeejmi@gmail.com</p>
             <p className="opacity-70 my-1">
               Jamia Millia Islamia, Jamia Nagar, New Delhi

@@ -11,8 +11,11 @@ function Landing() {
     <div className="min-h-screen flex flex-col">
       <Fade up>
         <img
-          className={`h-screen w-screen object-cover absolute top-0 -z-50 brightness-95 `}
+          className={`w-screen  object-cover absolute top-0 -z-50 brightness-95 `}
           src={HomeBg}
+          style={{
+            height: "120vh",
+          }}
           alt="Home Background"
           ref={bgRef}
         />
