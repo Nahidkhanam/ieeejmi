@@ -1,0 +1,21 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.team-list {
+  @apply w-screen overflow-hidden m-0;
+  .swiper-slide-active {
+    .header-team-list {
+      @apply bg-slate-200 rounded-full text-slate-700;
+    }
+  }
+
+  .swiper-slide-prev,
+  .swiper-slide-next {
+    @apply scale-90 opacity-50;
+  }
+
+  .header-team-list {
+    @apply transition-all cursor-pointer;
+  }
+}

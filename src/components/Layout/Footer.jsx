@@ -11,7 +11,7 @@ function Footer() {
         <img src={IEEEJMI} alt="IEEE JMI" className="w-48" />
       </div>
       <div className="md:w-1/4">
-        <ul className="flex md:flex-col my-3 md:my-0">
+        <ul className="flex flex-col text-center md:text-left my-3 md:my-0">
           {route.map((item, index) => (
             <li>
               <NavLink
