@@ -3,7 +3,7 @@ import bgMask from "../../../assets/images/home/contactus/whitecorner.svg";
 
 function ContactUs() {
   return (
-    <div className="font-body">
+    <div className="font-body" id="contact-form">
       <img src={bgMask} alt="bgmask" className="absolute" />
       <div className="bg-black w-full py-28">
         <p className="text-white md:ml-32 text-center md:text-left text-4xl py-8">
