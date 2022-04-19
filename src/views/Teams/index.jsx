@@ -1,15 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import faker from "@faker-js/faker";
 import Card from "../../components/Teams/Card";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 import { useMediaQuery } from "react-responsive";
+import Execomm from "../../components/Teams/Execomm";
+import { useQuery } from "@apollo/client";
+import { GET_ALL_TEAM_NAMES } from "../../api/teams";
+import Skeleton from "react-loading-skeleton";
+import Team, { IndividualLoading } from "../../components/Teams/Team";
 
 function Teams() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
-  const [currentTeam, setCurrentTeam] = useState("Header");
+  const [currentTeam, setCurrentTeam] = useState(null);
+
+  const { loading, error, data } = useQuery(GET_ALL_TEAM_NAMES);
+
+  useEffect(() => {
+    setCurrentTeam(data?.__type?.enumValues[0]?.name);
+  }, [data]);
 
   return (
     <div className="font-body pt-28 flex flex-col justify-center items-center">
@@ -18,47 +29,60 @@ function Teams() {
       </div>
 
       <div className="w-full p-4">
-        <div className="flex justify-center items-center flex-wrap gap-y-16 mt-20">
-          {Array(4)
-            .fill(0)
-            .map((item, index) => (
-              <Card className="w-1/2 md:w-1/3" />
-            ))}
-        </div>
+        <Execomm />
       </div>
-      <div className="w-full overflow-hidden team-list">
+      <div
+        className="overflow-hidden team-list"
+        style={{
+          width: "99vw",
+        }}
+      >
         <Swiper
           spaceBetween={50}
           slidesPerView={isTabletOrMobile ? 1 : 3}
           loop={true}
           centeredSlides={true}
           onSlideChange={(swiper) => {
-            console.log(swiper.clickedSlide?.children[0]?.innerHTML);
+            setCurrentTeam(
+              swiper.clickedSlide?.children[0]?.innerHTML
+                .replace("Team", "")
+                .trim()
+                .replace(" ", "_")
+            );
           }}
           onSwiper={(swiper) => console.log(swiper)}
           slideToClickedSlide={true}
         >
-          {Array(8)
-            .fill(0)
-            .map((item, index) => (
-              <SwiperSlide className="text-center p-5 px-14">
-                <div className="p-6 header-team-list">
-                  {faker.name.jobTitle()}
-                </div>
-              </SwiperSlide>
-            ))}
+          {loading
+            ? Array(8)
+                .fill(0)
+                .map((item, index) => (
+                  <SwiperSlide className="text-center p-5 px-14">
+                    <div className="p-6 header-team-list">
+                      <Skeleton height={50} width={200} />
+                    </div>
+                  </SwiperSlide>
+                ))
+            : data.__type.enumValues.map((item, index) => {
+                if (item.name === "Execomm") return null;
+
+                return (
+                  <SwiperSlide className="text-center p-5 px-14">
+                    <div className="p-6 header-team-list">
+                      {item.name.slice().replace("_", " ")} Team
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
         </Swiper>
-        <div className="w-full flex justify-center items-center">
-          <Card className="w-1/2 md:w-1/4 py-12 rounded-md border" />
-        </div>
-        <div className="flex flex-wrap md:gap-8 justify-center items-center mt-10">
-          {Array(8)
-            .fill(0)
-            .map((item, index) => (
-              <Card className="w-1/2 md:w-1/4 py-12 rounded-md md:border" />
-            ))}
-        </div>
       </div>
+      {currentTeam ? (
+        <div className="w-full flex flex-col justify-center items-center">
+          <Team name={currentTeam} />
+        </div>
+      ) : (
+        <IndividualLoading />
+      )}
     </div>
   );
 }

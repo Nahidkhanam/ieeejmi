@@ -8,6 +8,7 @@ import GenerateData from "./generateData";
 
 import { GET_PAST_EVENTS, GET_UPCOMING_EVENTS } from "../../api/events";
 import { useQuery } from "@apollo/client";
+import Loading from "../Loading";
 const apiMap = {
   PAST: GET_PAST_EVENTS,
   UPCOMING: GET_UPCOMING_EVENTS,
@@ -21,7 +22,7 @@ function EventsTimeline(props) {
 
   const { loading, error, data } = useQuery(apiMap[props.type]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading className={"relative min-h-screen"} />;
   if (error) return <p>Error :(</p>;
 
   console.log(data);
