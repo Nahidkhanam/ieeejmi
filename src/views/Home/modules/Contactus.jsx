@@ -41,7 +41,7 @@ function ContactUs() {
             </form>
           </div>
           <div className="md:w-1/2 flex flex-col items-center md:items-start mx-4 md:mx-0 text-white">
-            <p className="opacity-70 my-1">ieeejmi@gmail.com</p>
+            <p className="opacity-70 my-1">ieeejmiteam@gmail.com</p>
             <p className="opacity-70 my-1">
               Jamia Millia Islamia, Jamia Nagar, New Delhi
             </p>
