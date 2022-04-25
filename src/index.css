@@ -8,3 +8,9 @@
 body{
     margin: 0px;
 }
+
+.swiper-button-prev,.swiper-button-next{
+    color: black;
+    z-index: 1000;
+    @apply scale-50;
+}

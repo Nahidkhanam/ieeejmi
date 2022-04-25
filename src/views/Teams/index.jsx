@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import faker from "@faker-js/faker";
 import Card from "../../components/Teams/Card";
 import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 import { useMediaQuery } from "react-responsive";
@@ -11,15 +12,22 @@ import { GET_ALL_TEAM_NAMES } from "../../api/teams";
 import Skeleton from "react-loading-skeleton";
 import Team, { IndividualLoading } from "../../components/Teams/Team";
 
+SwiperCore.use([Navigation]);
+
 function Teams() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
   const [currentTeam, setCurrentTeam] = useState(null);
-
+  const [teamNames, setTeamNames] = useState([]);
   const { loading, error, data } = useQuery(GET_ALL_TEAM_NAMES);
 
   useEffect(() => {
     setCurrentTeam(data?.__type?.enumValues[0]?.name);
+    if (data?.__type?.enumValues.length > 0) {
+      setTeamNames(
+        data.__type.enumValues.filter((team) => team.name !== "Execomm")
+      );
+    }
   }, [data]);
 
   return (
@@ -41,14 +49,24 @@ function Teams() {
           spaceBetween={50}
           slidesPerView={isTabletOrMobile ? 1 : 3}
           loop={true}
+          navigation={isTabletOrMobile}
           centeredSlides={true}
+          // pagination={{ clickable: true }}
           onSlideChange={(swiper) => {
-            setCurrentTeam(
-              swiper.clickedSlide?.children[0]?.innerHTML
-                .replace("Team", "")
-                .trim()
-                .replace(" ", "_")
-            );
+            if (isTabletOrMobile) {
+              setCurrentTeam(
+                teamNames[
+                  (swiper.activeIndex - 1 + teamNames.length) % teamNames.length
+                ]?.name
+              );
+            } else {
+              setCurrentTeam(
+                swiper.clickedSlide?.children[0]?.innerHTML
+                  .replace("Team", "")
+                  .trim()
+                  .replace(" ", "_")
+              );
+            }
           }}
           onSwiper={(swiper) => console.log(swiper)}
           slideToClickedSlide={true}
@@ -63,11 +81,9 @@ function Teams() {
                     </div>
                   </SwiperSlide>
                 ))
-            : data.__type.enumValues.map((item, index) => {
-                if (item.name === "Execomm") return null;
-
+            : teamNames.map((item, index) => {
                 return (
-                  <SwiperSlide className="text-center p-5 px-14">
+                  <SwiperSlide className="text-center p-5 px-14" key={index}>
                     <div className="p-6 header-team-list">
                       {item.name.slice().replace("_", " ")} Team
                     </div>

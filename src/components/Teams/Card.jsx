@@ -2,8 +2,11 @@ import React from "react";
 import faker from "@faker-js/faker";
 import { AiOutlineTwitter, AiFillLinkedin } from "react-icons/ai";
 import Skeleton from "react-loading-skeleton";
+import { useMediaQuery } from "react-responsive";
 
 function Card(props) {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+
   return (
     <div
       className={`${props.className} flex flex-col justify-center items-center `}
@@ -15,20 +18,31 @@ function Card(props) {
           alt=""
         />
       ) : (
-        <Skeleton circle={true} height={208} width={208} />
+        <Skeleton
+          circle={true}
+          height={!isTabletOrMobile ? 208 : 100}
+          width={!isTabletOrMobile ? 208 : 100}
+        />
       )}
       <div className="w-full flex flex-col justify-center items-center text-center">
         {props.name ? (
           <h2 className="md:text-xl mt-7">{props.name}</h2>
         ) : (
-          <Skeleton className="md:text-xl mt-7" height={20} width={100} />
+          <Skeleton
+            className="md:text-xl mt-7"
+            height={isTabletOrMobile ? 10 : 20}
+            width={isTabletOrMobile ? 70 : 100}
+          />
         )}
         {props.designation ? (
           <p className="text-sm  md:text-base mt-2 opacity-30">
             {props.designation}
           </p>
         ) : (
-          <Skeleton width={200} height={20} />
+          <Skeleton
+            width={isTabletOrMobile ? 120 : 200}
+            height={isTabletOrMobile ? 10 : 20}
+          />
         )}
         <div className="flex gap-x-2 my-3">
           {props.linkedIn ? (
