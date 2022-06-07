@@ -9,6 +9,7 @@ import Blogs from "./views/Blogs";
 import Layout from "./components/Layout";
 import Events from "./views/Events/events";
 import Teams from "./views/Teams";
+import Blog from "./views/Blogs/Blog";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -21,6 +22,7 @@ function App() {
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
               <Route path="/blogs" element={<Blogs />} />
+              <Route path="/blogs/:slug" element={<Blog />} />
               <Route path="/events" element={<Events />} />
               <Route path="/team" element={<Teams />} />
             </Route>

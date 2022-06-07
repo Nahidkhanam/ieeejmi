@@ -14,16 +14,11 @@ function Navbar() {
   });
 
   const location = useLocation();
-
-  console.log(location);
-
   const ref = useRef(null);
 
   useEffect(() => {
-    console.log("Current : ", ref.current);
     if (ref.current) {
       const rect = ref.current.getBoundingClientRect();
-      console.log("Rect", rect);
       setNavinfo({
         width: rect.width,
         height: rect.height,
