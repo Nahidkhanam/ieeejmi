@@ -8,12 +8,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@apollo/client": "^3.5.10",
+    "@apollo/client": "3.8.1",
     "@heroicons/react": "^1.0.6",
     "@hydralite/vortex": "^0.1.4",
     "dayjs": "^1.11.0",
     "framer-motion": "^6.3.0",
-    "graphql": "^16.3.0",
+    "graphql": "16.6.0",
     "moment": "^2.29.3",
     "node-sass": "^7.0.1",
     "react": "^16.14.0",

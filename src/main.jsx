@@ -9,6 +9,7 @@ import { client } from "./ApolloClient";
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* Hello */}
     <ApolloProvider client={client}>
       <App />
     </ApolloProvider>
