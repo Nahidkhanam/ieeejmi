@@ -1,5 +1,5 @@
 import React from "react";
-import faker from "@faker-js/faker";
+import {faker} from "@faker-js/faker";
 import { AiOutlineTwitter, AiFillLinkedin } from "react-icons/ai";
 import Skeleton from "react-loading-skeleton";
 import { useMediaQuery } from "react-responsive";

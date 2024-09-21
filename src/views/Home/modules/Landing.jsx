@@ -1,6 +1,6 @@
 import React from "react";
 import HomeBg from "../../../assets/images/home/home_bg.jpg";
-import { Slide, Fade } from "react-reveal";
+import { Slide, Fade } from "react-awesome-reveal";
 import { FaAngleDown } from "react-icons/fa";
 import { BsChevronDown, BsFillTelephoneFill } from "react-icons/bs";
 

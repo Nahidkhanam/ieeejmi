@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import faker from "@faker-js/faker";
+import {faker} from "@faker-js/faker";
 import Card from "../../components/Teams/Card";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation } from "swiper";
-import "swiper/swiper-bundle.min.css";
-import "swiper/swiper.min.css";
+//import SwiperCore, { Navigation } from "swiper";
+import { Navigation } from "swiper/modules";
+import "../../../node_modules/swiper/swiper.min.css";
+//import "swiper/swiper.min.css";
+
 import { useMediaQuery } from "react-responsive";
 import Execomm from "../../components/Teams/Execomm";
 import { useQuery } from "@apollo/client";
@@ -12,7 +14,7 @@ import { GET_ALL_TEAM_NAMES } from "../../api/teams";
 import Skeleton from "react-loading-skeleton";
 import Team, { IndividualLoading } from "../../components/Teams/Team";
 
-SwiperCore.use([Navigation]);
+//SwiperCore.use([Navigation]);
 
 function Teams() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
