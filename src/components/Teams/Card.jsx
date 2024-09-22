@@ -12,11 +12,19 @@ function Card(props) {
       className={`${props.className} flex flex-col justify-center items-center `}
     >
       {props.url ? (
+        <div style={{
+            "filter": "drop-shadow(0px 0px 10px var(--shadow-color))",
+            "--shadow-color":(props.shadowColor?props.shadowColor:"rgba(255,0,0,1)"),
+          }}>
         <img
-          className="rounded-full w-24 h-24 md:w-52 md:h-52 object-cover  transition-all"
+          className="rounded-3xl w-32 max-h-44 md:w-56 md:h-52 object-cover object-top transition-all"
           src={props.url}
           alt=""
+          style={{
+              "mask-image":"linear-gradient(to bottom, rgba(0,0,0,1)90%, rgba(0,0,0,0) 100%)",
+          }}
         />
+        </div>
       ) : (
         <Skeleton
           circle={true}
