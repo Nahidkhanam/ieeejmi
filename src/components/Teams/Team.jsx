@@ -36,7 +36,7 @@ function Team(props) {
   useEffect(() => {
     if (Array.isArray(data?.teams)) {
       setTeam({
-        head: data?.teams.filter((item) => item.designation === "Team Head")[0],
+        heads: data?.teams.filter((item) => item.designation === "Team Head"),
         members: data?.teams.filter((item) => item.designation !== "Team Head"),
       });
     }
@@ -55,12 +55,16 @@ function Team(props) {
   return (
     <React.Fragment>
       <div className="w-full flex justify-center items-center">
-        <Card
-          className="w-1/2 md:w-1/5  py-12 rounded-md "
-          url={team?.head?.photo.url}
-          name={team?.head?.name}
-          designation={team?.head?.designation}
+        {team?.heads.map((item, index) => (
+          <Card
+          className="w-1/2 md:w-1/5 py-12 rounded-md "
+          url={"/images/image_18.jpg"}
+          name={item.name}
+          designation={item.designation}
         />
+        ))}
+        
+        {/**/}
       </div>
       <div className="flex w-full flex-wrap md:gap-8 justify-center items-center mt-10">
         {team?.members.map((item, index) => (
