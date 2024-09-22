@@ -9,7 +9,7 @@ function Landing() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Fade up>
+      <Fade triggerOnce={true} direction="up" delay={200}>
         <img
           className={`w-screen  object-cover absolute top-0 -z-50 brightness-95 `}
           src={HomeBg}
@@ -30,11 +30,11 @@ function Landing() {
         </a>
       </p>
       <div className={`md:flex-grow  flex-col justify-center font-body flex`}>
-        <Slide left>
+        <Slide>
           <div
             className={`md:w-1/3 p-10 md:text-black text-white md:bg-slate-100/90 rounded-r-md py-14 md:shadow-2xl transition-all text-left md:my-0 mt-40 `}
           >
-            <Slide left cascade>
+            <Slide cascade>
               <h1
                 className={`text-6xl font-bold my-2 md:text-left text-center`}
               >
