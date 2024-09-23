@@ -61,7 +61,7 @@ function Landing() {
           className={`mb-14 text-1xl font-bold  px-14 transition-all flex flex-col justify-center items-center md:items-start`}
         >
           <button
-            className={`bg-white hover:bg-gray-900 hover:text-white py-4 px-10 rounded-full sm-flex-items-centre 
+            className={`bg-white hover:bg-gray-900 hover:text-white py-4 px-10 rounded-full 
             flex 
             shadow-xl transition-all
               group
