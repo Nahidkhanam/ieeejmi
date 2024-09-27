@@ -38,8 +38,8 @@ function NavbarMobile() {
   }
 
   return (
-    <div>
-      <div className="md:hidden nav shadow-2xl z-50 sticky w-full flex bg-white  font-body items-center justify-center  ">
+    <div className="w-full sticky top-0 z-50">
+      <div className="md:hidden nav shadow-2xl sticky top-0 left-0 w-full flex bg-white  font-body items-center justify-center  ">
         <div
           className="md:hidden flex flex-col items-start justify-center hover:cursor-pointer transition-all mr-auto py-3 px-2 group w-2/3 z-50 "
           onClick={() => setOpen()}
@@ -61,7 +61,7 @@ function NavbarMobile() {
         </div>
       </div>
       <div
-        className="w-screen h-screen fixed top-0 left-0 bg-black transition-all"
+        className="w-screen h-screen fixed top-0 left-0 bg-black transition-all -z-10"
         onClick={() => setIsOpen()}
         style={{
           pointerEvents: isOpen ? null : "none",
