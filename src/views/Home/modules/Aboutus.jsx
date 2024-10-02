@@ -10,7 +10,7 @@ function AboutUs() {
           <h1 className="md:text-4xl text-2xl font-bold my-2">About Us</h1>
           <img
             src={arrow}
-            className="absolute opacity-25 scale-75 -rotate-6 -ml-24 mt-14 hidden md:block"
+            className="absolute opacity-25 scale-75 -rotate-6 -ml-24 mt-0 hidden md:block"
           />
         </div>
         <p className="text-justify md:text-lg my-5 text-gray-500 mt-10">
