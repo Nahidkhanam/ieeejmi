@@ -4,7 +4,7 @@ import { AiOutlineTwitter, AiFillLinkedin } from "react-icons/ai";
 import Skeleton from "react-loading-skeleton";
 import { useMediaQuery } from "react-responsive";
 
-function Card(props) {
+function TeamCard(props) {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
   return (
@@ -65,4 +65,4 @@ function Card(props) {
   );
 }
 
-export default Card;
+export default TeamCard;
