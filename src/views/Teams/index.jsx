@@ -72,7 +72,12 @@ function Teams() {
               );
             } else {
               // Set currentTeam based on the active slide index as a fallback
-              setCurrentTeam("Content");
+              setCurrentTeam(
+                /*teamNames[
+                  (swiper.activeIndex - 1 + teamNames.length) % teamNames.length
+                ]?.name*/
+                teamNames[0]?.name
+              );
               console.log("fallback", teamNames[
                 (swiper.activeIndex - 1 + teamNames.length) % teamNames.length
               ]?.name);
