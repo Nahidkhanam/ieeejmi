@@ -61,7 +61,7 @@ function NavbarMobile() {
         </div>
       </div>
       <div
-        className="w-screen h-screen fixed top-0 left-0 bg-black transition-all -z-10"
+        className="w-full h-screen fixed top-0 left-0 bg-black transition-all -z-10"
         onClick={() => setIsOpen()}
         style={{
           pointerEvents: isOpen ? null : "none",
