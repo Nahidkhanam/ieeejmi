@@ -1,4 +1,4 @@
-import faker from "@faker-js/faker";
+import {faker} from "@faker-js/faker";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 
@@ -10,7 +10,7 @@ const GenerateData = (count) => {
     .map(() => {
       return {
         title: faker.lorem.sentence(),
-        icon: faker.image.abstract(100, 100, true),
+        icon: faker.image.url({ width: 100, height: 100, category: 'abstract', grayscale: true }),
         date: dayjs(faker.date.past()).format("MMM, DD YYYY"),
         description: faker.lorem.paragraph(),
       };

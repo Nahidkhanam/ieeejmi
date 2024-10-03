@@ -38,10 +38,10 @@ function NavbarMobile() {
   }
 
   return (
-    <div>
-      <div className="sm:hidden nav shadow-2xl z-50 fixed w-screen flex bg-white  font-body items-center justify-center  ">
+    <div className="w-full sticky top-0 z-50">
+      <div className="md:hidden nav shadow-2xl sticky top-0 left-0 w-full flex bg-white  font-body items-center justify-center  ">
         <div
-          className="sm:hidden flex flex-col items-start justify-center transition-all mr-auto hover:bg-gray-100 py-3 px-2 group w-2/3 z-50 "
+          className="md:hidden flex flex-col items-start justify-center hover:cursor-pointer transition-all mr-auto py-3 px-2 group w-2/3 z-50 "
           onClick={() => setOpen()}
         >
           <div className="flex items-center">
@@ -53,7 +53,7 @@ function NavbarMobile() {
         <div>
           <Link to="/">
             <img
-              className="w-20 mx-3"
+              className="w-20"
               src={IEEEJMI}
               onClick={() => setIsOpen(false)}
             />
@@ -61,7 +61,7 @@ function NavbarMobile() {
         </div>
       </div>
       <div
-        className="w-screen h-screen fixed top-0 left-0 bg-black transition-all"
+        className="w-full h-screen fixed top-0 left-0 bg-black transition-all -z-10"
         onClick={() => setIsOpen()}
         style={{
           pointerEvents: isOpen ? null : "none",

@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import faker from "@faker-js/faker";
+import {faker} from "@faker-js/faker";
 import Card from "../../components/Teams/Card";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation } from "swiper";
-import "swiper/swiper-bundle.min.css";
-import "swiper/swiper.min.css";
+import { Navigation } from "swiper/modules";
+import "../../../node_modules/swiper/swiper.min.css";
+//import "swiper/swiper.min.css";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import "../../assets/css/swiper-navigation.css";
 import { useMediaQuery } from "react-responsive";
 import Execomm from "../../components/Teams/Execomm";
 import { useQuery } from "@apollo/client";
@@ -12,12 +15,12 @@ import { GET_ALL_TEAM_NAMES } from "../../api/teams";
 import Skeleton from "react-loading-skeleton";
 import Team, { IndividualLoading } from "../../components/Teams/Team";
 
-SwiperCore.use([Navigation]);
+//SwiperCore.use([Navigation]);
 
 function Teams() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
-  const [currentTeam, setCurrentTeam] = useState(null);
+  const [currentTeam, setCurrentTeam] = useState("Content");
   const [teamNames, setTeamNames] = useState([]);
   const { loading, error, data } = useQuery(GET_ALL_TEAM_NAMES);
 
@@ -52,6 +55,7 @@ function Teams() {
           navigation={isTabletOrMobile}
           centeredSlides={true}
           // pagination={{ clickable: true }}
+          modules={[Navigation]}
           onSlideChange={(swiper) => {
             if (isTabletOrMobile) {
               setCurrentTeam(
@@ -59,13 +63,24 @@ function Teams() {
                   (swiper.activeIndex - 1 + teamNames.length) % teamNames.length
                 ]?.name
               );
-            } else {
+            } else if (swiper.clickedSlide) {
               setCurrentTeam(
-                swiper.clickedSlide?.children[0]?.innerHTML
+                swiper.clickedSlide.children[0].innerHTML
                   .replace("Team", "")
                   .trim()
                   .replace(" ", "_")
               );
+            } else {
+              // Set currentTeam based on the active slide index as a fallback
+              setCurrentTeam(
+                /*teamNames[
+                  (swiper.activeIndex - 1 + teamNames.length) % teamNames.length
+                ]?.name*/
+                teamNames[0]?.name
+              );
+              console.log("fallback", teamNames[
+                (swiper.activeIndex - 1 + teamNames.length) % teamNames.length
+              ]?.name);
             }
           }}
           onSwiper={(swiper) => console.log(swiper)}

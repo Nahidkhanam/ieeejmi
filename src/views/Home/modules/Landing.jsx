@@ -1,6 +1,6 @@
 import React from "react";
 import HomeBg from "../../../assets/images/home/home_bg.jpg";
-import { Slide, Fade } from "react-reveal";
+import { Slide, Fade } from "react-awesome-reveal";
 import { FaAngleDown } from "react-icons/fa";
 import { BsChevronDown, BsFillTelephoneFill } from "react-icons/bs";
 
@@ -9,7 +9,7 @@ function Landing() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Fade up>
+      <Fade triggerOnce={true} direction="up" delay={200}>
         <img
           className={`w-screen  object-cover absolute top-0 -z-50 brightness-95 `}
           src={HomeBg}
@@ -30,11 +30,11 @@ function Landing() {
         </a>
       </p>
       <div className={`md:flex-grow  flex-col justify-center font-body flex`}>
-        <Slide left>
+        <Slide>
           <div
             className={`md:w-1/3 p-10 md:text-black text-white md:bg-slate-100/90 rounded-r-md py-14 md:shadow-2xl transition-all text-left md:my-0 mt-40 `}
           >
-            <Slide left cascade>
+            <Slide cascade>
               <h1
                 className={`text-6xl font-bold my-2 md:text-left text-center`}
               >
@@ -61,10 +61,14 @@ function Landing() {
           className={`mb-14 text-1xl font-bold  px-14 transition-all flex flex-col justify-center items-center md:items-start`}
         >
           <button
-            className={`bg-white hover:bg-gray-900 hover:text-white py-4 px-10 rounded-full sm-flex-items-centre 
+            className={`bg-white hover:bg-gray-900 hover:text-white py-4 px-10 hover:pl-6 rounded-full 
             flex 
             shadow-xl transition-all
               group
+              z-10
+              hover:ease-linear
+              hover:duration-300
+              hover:transition-all
             `}
             onClick={() => {
               const contactForm = document.getElementById("contact-form");
@@ -72,11 +76,13 @@ function Landing() {
             }}
           >
             <BsFillTelephoneFill
-              className={`self-center -mr-5
-              group-hover:mr-2
+              className={`self-center -mr-0
+              group-hover:mr-3
               transition-all
-              opacity-0
-              group-hover:opacity-100
+              w-0
+              group-hover:min-w-max
+              group-hover:ease-linear
+              group-hover:duration-300
             `}
             />
             Contact Us

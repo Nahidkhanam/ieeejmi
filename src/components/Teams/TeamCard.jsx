@@ -4,7 +4,7 @@ import { AiOutlineTwitter, AiFillLinkedin } from "react-icons/ai";
 import Skeleton from "react-loading-skeleton";
 import { useMediaQuery } from "react-responsive";
 
-function Card(props) {
+function TeamCard(props) {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
   return (
@@ -14,12 +14,15 @@ function Card(props) {
       {props.url ? (
         <div style={{
             "filter": "drop-shadow(0px 0px 10px var(--shadow-color))",
-            "--shadow-color":(props.shadowColor?props.shadowColor:"rgba(0,0,0,0.7)"),
+            "--shadow-color":(props.shadowColor?props.shadowColor:"rgba(0,0,0,1)"),
           }}>
         <img
-          className=" rounded-full w-32 h-32 md:w-56 md:h-56 object-cover transition-all"
+          className="rounded-3xl w-32 h-48 md:w-56 md:h-72 object-cover object-top transition-all"
           src={props.url}
           alt=""
+          style={{
+              "mask-image":"linear-gradient(to bottom, rgba(0,0,0,1)90%, rgba(0,0,0,0) 100%)",
+          }}
         />
         </div>
       ) : (
@@ -62,4 +65,4 @@ function Card(props) {
   );
 }
 
-export default Card;
+export default TeamCard;
