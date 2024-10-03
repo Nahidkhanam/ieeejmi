@@ -58,7 +58,7 @@ function Team(props) {
         {team?.heads.map((item, index) => (
           <TeamCard
           className="w-1/2 md:w-1/5 py-12 rounded-md "
-          url={"/images/image_18.jpg"}
+          url={item.photo.url} //"/images/image_18.jpg"
           name={item.name}
           designation={item.designation}
         />
