@@ -23,13 +23,13 @@ function Navbar() {
         width: rect.width,
         height: rect.height,
         x: rect.x,
-        y: 50.6,
+        y: 40,
       });
     }
   }, [ref.current, location]);
 
   return (
-    <div className="pl-10 pt-9 font-body absolute z-50 hidden md:flex">
+    <div className="pl-10 pt-4 pb-3 w-full bg-white font-body absolute z-50 hidden md:flex">
       <img
         className="w-32"
         src={IEEEJMI}

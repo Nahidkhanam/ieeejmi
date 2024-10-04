@@ -1,5 +1,5 @@
 import React from "react";
-import HomeBg from "../../../assets/images/home/home_bg.jpg";
+import FET from "../../../assets/images/home/FET.jpg";
 import { Slide, Fade } from "react-awesome-reveal";
 import { FaAngleDown } from "react-icons/fa";
 import { BsChevronDown, BsFillTelephoneFill } from "react-icons/bs";
@@ -12,7 +12,7 @@ function Landing() {
       <Fade triggerOnce={true} direction="up" delay={200}>
         <img
           className={`w-screen  object-cover absolute top-0 -z-50 brightness-95 `}
-          src={HomeBg}
+          src={FET}
           style={{
             height: "120vh",
           }}
