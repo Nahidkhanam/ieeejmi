@@ -1,5 +1,5 @@
 import React from "react";
-import HomeBg from "../../../assets/images/home/home_bg.jpg";
+import FET from "../../../assets/images/home/FET.jpg";
 import { Slide, Fade } from "react-awesome-reveal";
 import { FaAngleDown } from "react-icons/fa";
 import { BsChevronDown, BsFillTelephoneFill } from "react-icons/bs";
@@ -11,8 +11,8 @@ function Landing() {
     <div className="min-h-screen flex flex-col">
       <Fade triggerOnce={true} direction="up" delay={200}>
         <img
-          className={`w-screen  object-cover absolute top-0 -z-50 brightness-95 `}
-          src={HomeBg}
+          className={`w-screen  object-cover absolute top-0 -z-50`}
+          src={FET}
           style={{
             height: "120vh",
           }}
@@ -23,7 +23,7 @@ function Landing() {
       <div className={`md:flex-grow  flex-col justify-center font-body flex`}>
         <Slide>
           <div
-            className={`md:w-1/3 p-10 md:text-black text-white md:bg-slate-100/90 rounded-r-md py-14 md:shadow-2xl transition-all text-left md:my-0 mt-40 `}
+            className={`md:w-1/3 md:min-w-96 p-10 md:text-black text-white md:bg-slate-100/90 rounded-r-md py-14 md:shadow-2xl transition-all text-left md:my-0 mt-40 `}
           >
             <Slide cascade>
               <h1
