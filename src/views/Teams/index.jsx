@@ -3,7 +3,6 @@ import {faker} from "@faker-js/faker";
 import Card from "../../components/Teams/Card";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import "../../../node_modules/swiper/swiper.min.css";
 //import "swiper/swiper.min.css";
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -43,24 +42,24 @@ function Teams() {
         <Execomm />
       </div>
       <div
-        className="overflow-hidden team-list"
+        className="team-list"
         style={{
-          width: "99vw",
+          width: "90vw",
         }}
       >
         <Swiper
           spaceBetween={50}
           slidesPerView={isTabletOrMobile ? 1 : 3}
-          loop={true}
-          navigation={isTabletOrMobile}
+          navigation={true}
           centeredSlides={true}
+          loop={true}
           // pagination={{ clickable: true }}
           modules={[Navigation]}
           onSlideChange={(swiper) => {
-            if (isTabletOrMobile) {
+            if (true) {
               setCurrentTeam(
                 teamNames[
-                  (swiper.activeIndex - 1 + teamNames.length) % teamNames.length
+                  (swiper.realIndex + teamNames.length) % teamNames.length
                 ]?.name
               );
             } else if (swiper.clickedSlide) {
@@ -82,9 +81,10 @@ function Teams() {
                 (swiper.activeIndex - 1 + teamNames.length) % teamNames.length
               ]?.name);
             }
+            console.log(swiper.realIndex);
           }}
           onSwiper={(swiper) => console.log(swiper)}
-          slideToClickedSlide={true}
+          slideToClickedSlide={false}
         >
           {loading
             ? Array(8)
