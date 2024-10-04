@@ -9,9 +9,7 @@ export const GET_ALL_BLOGS = gql`
       img {
         url
       }
-      author {
-        name
-      }
+      author
       slug
     }
   }
@@ -21,14 +19,7 @@ export const GET_BLOG = (slug) => gql`
 query {
     blog(where: {slug: "${slug}"}) {
       title
-      author {
-        name
-        photo {
-          url(transformation: {
-            image: { resize: { width: 50, height: 50, fit: clip } }
-          })
-        }
-      }
+      author 
       content {
           markdown
       }

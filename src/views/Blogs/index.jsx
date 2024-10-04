@@ -1,4 +1,4 @@
-import React from "react";
+import {useEffect, useState} from "react";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_BLOGS } from "../../api/blogs";
 import { useNavigate } from "react-router-dom";
@@ -33,13 +33,13 @@ eats the maccy mac extra largeeee pizzaaaa within 40 minutes
 const Blogs = () => {
   const navigate = useNavigate();
   const { loading, error, data } = useQuery(GET_ALL_BLOGS);
-  const [blogs, setBlogs] = React.useState([]);
+  const [blogs, setBlogs] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (data?.blogs) {
       setBlogs(
         data.blogs.map((blog) => ({
-          author: blog.author[0].name,
+          author: blog.author[0],
           summary: blog.summary,
           img: blog.img.url,
           title: blog.title,
@@ -60,13 +60,13 @@ const Blogs = () => {
       >
         {blogs.map((blog) => (
           <div
-            className="w-full h-56 flex rounded overflow-hidden shadow-lg m-2"
+            className="w-full min-h-max h-72 flex flex-row rounded overflow-hidden shadow-lg m-2"
             key={blog.id}
           >
-            <div className="flex flex-col justify-between items-start m-4">
+            <div className="flex flex-col h-max justify-between items-start m-4">
               <div className="flex flex-col items-start">
                 <h1>{blog.title}</h1>
-                <p className="font-normal text-slate-600 text-sm mt-4">
+                <p className="h-full font-normal text-wrap text-slate-600 text-sm mt-4">
                   {blog.summary.slice(0, 500).concat("...")}
                 </p>
                 <strong className="font-light text-sm text-slate-400 mt-2 ">
@@ -80,7 +80,7 @@ const Blogs = () => {
                 Continue Reading
               </button>
             </div>
-            <img src={blog.img} style={{ height: "100%", width: "auto" }} />
+            <img className="" src={blog.img} style={{ height: "100%", width: "auto" }} />
           </div>
         ))}
       </div>
