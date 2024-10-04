@@ -39,7 +39,7 @@ function NavbarMobile() {
 
   return (
     <div className="w-full sticky top-0 z-50">
-      <div className="md:hidden nav shadow-2xl sticky top-0 left-0 w-full flex bg-white  font-body items-center justify-center  ">
+      <div className="md:hidden nav shadow-2xl sticky top-0 left-0 w-full bg-white flex font-body items-center justify-center  ">
         <div
           className="md:hidden flex flex-col items-start justify-center hover:cursor-pointer transition-all mr-auto py-3 px-2 group w-2/3 z-50 "
           onClick={() => setOpen()}

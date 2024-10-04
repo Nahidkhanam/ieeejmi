@@ -11,7 +11,7 @@ function Landing() {
     <div className="min-h-screen flex flex-col">
       <Fade triggerOnce={true} direction="up" delay={200}>
         <img
-          className={`w-screen  object-cover absolute top-0 -z-50 brightness-95 `}
+          className={`w-screen  object-cover absolute top-0 -z-50`}
           src={FET}
           style={{
             height: "120vh",
@@ -23,7 +23,7 @@ function Landing() {
       <div className={`md:flex-grow  flex-col justify-center font-body flex`}>
         <Slide>
           <div
-            className={`md:w-1/3 p-10 md:text-black text-white md:bg-slate-100/90 rounded-r-md py-14 md:shadow-2xl transition-all text-left md:my-0 mt-40 `}
+            className={`md:w-1/3 md:min-w-96 p-10 md:text-black text-white md:bg-slate-100/90 rounded-r-md py-14 md:shadow-2xl transition-all text-left md:my-0 mt-40 `}
           >
             <Slide cascade>
               <h1

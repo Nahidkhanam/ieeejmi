@@ -57,7 +57,7 @@ function Navbar() {
             key={index}
             style={({ isActive }) => {
               return {
-                fontWeight: isActive ? "normal" : "200",
+                fontWeight: isActive ? "500" : "300",
               };
             }}
             ref={location.pathname === item.path ? ref : null}
