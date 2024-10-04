@@ -20,15 +20,6 @@ function Landing() {
           ref={bgRef}
         />
       </Fade>
-      <p className="absolute -bottom-14 right-3 text-white font-body font-extralight">
-        Credits to
-        <a
-          className="mx-2 text-sm bg-green-500/40 px-2 py-1 rounded-md hover:bg-green-300/45"
-          href="https://www.instagram.com/ejaz_ahmed.jmi/"
-        >
-          Ejaz Ahmad
-        </a>
-      </p>
       <div className={`md:flex-grow  flex-col justify-center font-body flex`}>
         <Slide>
           <div
