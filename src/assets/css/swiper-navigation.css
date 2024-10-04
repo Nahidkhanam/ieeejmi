@@ -1,3 +1,18 @@
 .swiper-button-prev, .swiper-button-next {
     color: black;
+    margin-top: -25px;
+    border-radius: 100%;
+    font-weight: 1000;
+    font-size: x-large;
+    transition: all;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+}
+
+.swiper-button-prev:hover, .swiper-button-next:hover {
+    color: rgb(0,100,255);
+    scale: 1.5;
+    transition: all;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
 }
