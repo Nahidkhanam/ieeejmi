@@ -16,8 +16,8 @@ const BlogPage = () => {
     if (data) {
       setBlog({
         author: {
-          name: data.blog.author[0].name,
-          avatar: data.blog.author[0].photo.url,
+          name: data.blog.author[0],
+          avatar: data.blog.author[0],
         },
         content: data.blog.content.markdown,
         header: {

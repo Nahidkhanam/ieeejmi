@@ -17,7 +17,7 @@ function Card(props) {
             "--shadow-color":(props.shadowColor?props.shadowColor:"rgba(0,0,0,0.7)"),
           }}>
         <img
-          className=" rounded-full w-32 h-32 md:w-56 md:h-56 object-cover transition-all"
+          className=" rounded-full w-36 h-36 md:w-56 md:h-56 object-cover transition-all"
           src={props.url}
           alt=""
         />
