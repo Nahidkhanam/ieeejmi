@@ -63,20 +63,16 @@ function EventsTimeline(props) {
             }
           >
             <h2>{item?.title}</h2>
-            <p
-              className="font-thin"
-              style={{
-                fontWeight: 200,
-                fontSize: "0.8rem",
-              }}
-            >
+            <p>
+            <pre className="text-wrap font-sans text-gray-800 text-base">
               {item?.excerpt}
+            </pre>
             </p>
             <div className="w-full flex justify-between mt-9">
               <div className="self-end text-sm px-4 font-extralight py-2 bg-black text-white rounded-full">
                 {item?.date}
               </div>
-              {props.type=="UPCOMING" && <button className="px-2 py-1 underline font-light hover:underline-offset-4 hover:-translate-y-1 transition-all">
+              {props.type=="UPCOMING" && <button className="px-3 rounded-full text-white bg-gray-900 font-light hover:scale-110 hover:font-medium hover:bg-blue-900 transition-all ease-out duration-300" onClick={() => window.open(item?.link)}>
                 Apply Now!
               </button>}
             </div>
