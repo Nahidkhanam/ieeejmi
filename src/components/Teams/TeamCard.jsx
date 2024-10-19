@@ -8,6 +8,7 @@ function TeamCard(props) {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
   return (
+
     <div
       className={`${props.className} flex flex-col justify-center items-center `}
     >
@@ -21,7 +22,7 @@ function TeamCard(props) {
           src={props.url}
           alt=""
           style={{
-              "mask-image":"linear-gradient(to bottom, rgba(0,0,0,1)90%, rgba(0,0,0,0) 100%)",
+              "maskImage":"linear-gradient(to bottom, rgba(0,0,0,1)90%, rgba(0,0,0,0) 100%)",
           }}
         />
         </div>

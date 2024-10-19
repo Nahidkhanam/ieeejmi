@@ -13,7 +13,7 @@ export const IndividualLoading = () => {
         {Array(8)
           .fill(0)
           .map((item, index) => (
-            <Card className="w-1/2 md:w-1/4 py-12 rounded-md md:border" />
+            <Card className="w-1/2 md:w-1/4 py-12 rounded-md md:border" key={index}/>
           ))}
       </div>
     </React.Fragment>
@@ -50,8 +50,6 @@ function Team(props) {
     return <p>Error :(</p>;
   }
 
-  console.log(team);
-
   return (
     <React.Fragment>
       <div className="w-full flex justify-center items-center">
@@ -61,6 +59,7 @@ function Team(props) {
           url={item.photo.url} //"/images/image_18.jpg"
           name={item.name}
           designation={item.designation}
+          key={index}
         />
         ))}
         
@@ -73,6 +72,7 @@ function Team(props) {
             url={item.photo.url}
             name={item.name}
             designation={item.designation}
+            key={index}
           />
         ))}
       </div>

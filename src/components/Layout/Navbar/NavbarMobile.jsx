@@ -14,7 +14,7 @@ function NavbarMobile() {
   function Menu() {
     return (
       <div
-        class="absolute transition-all bg-white top-10 w-4/5 left-0 overflow-hidden "
+        className="absolute transition-all bg-white top-10 w-4/5 left-0 overflow-hidden "
         style={{
           height: isOpen ? `${60 * route.length}px` : "0",
         }}
@@ -22,9 +22,9 @@ function NavbarMobile() {
         <ul className="list-none mt-1">
           {route.map((_, i) => {
             return (
-              <Link to={_.path}>
+              <Link to={_.path} key={i}>
                 <li
-                  class="font-semibold my-2 py-3 px-4 hover:bg-gray-100 transition-all "
+                  className="font-semibold my-2 py-3 px-4 hover:bg-gray-100 transition-all "
                   onClick={() => setIsOpen()}
                 >
                   {_.text}
@@ -46,7 +46,7 @@ function NavbarMobile() {
         >
           <div className="flex items-center">
             <GiHamburgerMenu />
-            <span class="ml-2 font-semibold cursor-pointer">Menu</span>
+            <span className="ml-2 font-semibold cursor-pointer">Menu</span>
             {Menu()}
           </div>
         </div>

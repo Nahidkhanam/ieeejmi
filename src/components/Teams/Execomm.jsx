@@ -62,13 +62,14 @@ function Execomm() {
   return (
     <div className="flex justify-center items-center flex-wrap gap-y-16 mt-20">
       {Teams?.map((team,i) => (
-        <div className="flex flex-row w-full justify-center">
+        <div className="flex flex-row w-full justify-center" key={i}>
         {team?.map((item, index) => (
         <Card
           className="w-1/2 md:w-1/3"
           url={item.photo.url}
           name={item.name}
           designation={item.designation}
+          key={index}
         />
       ))}
       </div>))}

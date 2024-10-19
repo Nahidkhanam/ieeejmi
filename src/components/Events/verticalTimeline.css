@@ -1,0 +1,90 @@
+.vertical-timeline-element--work {
+    /* background: linear-gradient(135deg, #f9fafb, #e5e7eb); */
+    color: #1f2937;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.vertical-timeline-element--work:hover {
+    transform: translateY(-7px);
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+.vertical-timeline-element-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827;
+}
+
+.vertical-timeline-element-content-arrow {
+    border-right: 7px solid #f9fafb;
+}
+
+.vertical-timeline-element-content {
+    padding: 1.5rem;
+}
+
+h2 {
+    color: #111827;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    font-size: 1rem;
+    color: #374151;
+    line-height: 1.5;
+}
+
+pre {
+    white-space: pre-wrap;
+    font-family: 'Roboto', sans-serif;
+    color: #4b5563;
+}
+
+.date-badge {
+    background-color: #111827;
+    color: #f9fafb;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+.icon-style {
+    background-color: black;
+    color: #1f2937;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.icon-style img {
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.icon-style:hover img {
+    transform: rotate(15deg);
+}
+
+.apply-button {
+    background-color: #1f2937;
+    color: #f9fafb;
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.apply-button:hover {
+    background-color: #2563eb;
+    transform: scale(1.09);
+}
