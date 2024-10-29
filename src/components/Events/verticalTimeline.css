@@ -1,15 +1,12 @@
 .vertical-timeline-element--work {
-    /* background: linear-gradient(135deg, #f9fafb, #e5e7eb); */
     color: #1f2937;
     border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
 
 }
 
 .vertical-timeline-element--work:hover {
     transform: translateY(-7px);
-    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 
