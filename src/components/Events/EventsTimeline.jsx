@@ -19,12 +19,19 @@ const apiMap = {
 };
 
 const EventsTimeline = ({type}) => {
-  const contentStyle = {
-    background: "linear-gradient(135deg, #f9fafb, #898a8d)",
+  const contentStyle1 = {
+    background: "linear-gradient(135deg, #a1ffce,#faffd1, #fe90AF)",
     color: "#1f2937",
     boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.1)",
     borderRadius: "10px",
   };
+
+  const contentStyle2 = {
+    background: "linear-gradient(135deg,#f598a6, #F6EA7BFF, #f10080)",
+    color: "#1f2937",
+    borderRadius: "10px",
+  };
+
 
   // Function to get the ordinal suffix for a given day
   const getOrdinalSuffix = (day) => {
@@ -57,14 +64,16 @@ const EventsTimeline = ({type}) => {
   return (
     <div className="font-body relative">
       <VerticalTimeline lineColor="rgb(107 114 128)" animate={true} layout="2-columns">
-        {sortedEvents.map((item, index) => (
+        {sortedEvents.map((item, index) => {
+          const styleler = index%2 ===0 ? contentStyle1:contentStyle2;
+          return(
           <VerticalTimelineElement
             key={index}
             className="vertical-timeline-element--work"
-            contentStyle={contentStyle}
+            contentStyle={styleler}
             contentArrowStyle={{ borderRight: "7px solid #898a8d"  }}
             date={`${dayjs(item?.date).date()}${getOrdinalSuffix(dayjs(item?.date).date())} ${dayjs(item?.date).format('MMMM YYYY')}`}
-            iconStyle={{ background: "#000", color: "#1f2937" }}
+            // iconStyle={{ background: "#000", color: "#1f2937" , borderRadius:"100%" }}
             icon={
               <img
                 src={item?.coverPhoto?.url}
@@ -93,7 +102,7 @@ const EventsTimeline = ({type}) => {
               )}
             </div>
           </VerticalTimelineElement>
-        ))}
+        )})}
       </VerticalTimeline>
     </div>
   );
