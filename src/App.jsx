@@ -12,7 +12,7 @@ import Teams from "./views/Teams";
 import Blog from "./views/Blogs/Blog";
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
 
   return (
     <div className="m-0">

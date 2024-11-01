@@ -34,7 +34,7 @@ function ContactUs() {
               </div>
               <button
                 type="button"
-                class="px-6 py-2.5 bg-red-500 text-white font-semibold text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 transition duration-150 ease-in-out my-4"
+                className="px-6 py-2.5 bg-red-500 text-white font-semibold text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 transition duration-150 ease-in-out my-4"
               >
                 SEND
               </button>

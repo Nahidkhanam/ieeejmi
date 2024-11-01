@@ -4,24 +4,38 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import GenerateData from "./generateData";
 import { GET_PAST_EVENTS, GET_UPCOMING_EVENTS } from "../../api/events";
 import { useQuery } from "@apollo/client";
 import Loading from "../Loading";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import "../Events/verticalTimeline.css";
+// Extend dayjs with custom parse format plugin
+dayjs.extend(customParseFormat);
+
 const apiMap = {
   PAST: GET_PAST_EVENTS,
   UPCOMING: GET_UPCOMING_EVENTS,
 };
-dayjs.extend(customParseFormat);
-function EventsTimeline(props) {
-  const contentStyle = {
-    background: "#fff",
-    color: "#000",
+
+const EventsTimeline = ({type}) => {
+  const contentStyle1 = {
+    background: "linear-gradient(135deg, #dadbf8,#d6a4ac)",
+    color: "#1f2937",
+    boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.1)",
+    borderRadius: "10px",
   };
+
+  const contentStyle2 = {
+    background: "linear-gradient(135deg,#99a5df, #6dede5)",
+    color: "#1f2937",
+    borderRadius: "10px",
+  };
+
+
+  // Function to get the ordinal suffix for a given day
   const getOrdinalSuffix = (day) => {
-    if (day > 3 && day < 21) return 'th'; // covers 11th to 19th
+    if (day > 3 && day < 21) return 'th'; // Covers 11th to 19th
     switch (day % 10) {
       case 1: return 'st';
       case 2: return 'nd';
@@ -29,58 +43,69 @@ function EventsTimeline(props) {
       default: return 'th';
     }
   };
-  const { loading, error, data } = useQuery(apiMap[props.type]);
 
+  const { loading, error, data } = useQuery(apiMap[type]);
+
+  // Loading state
   if (loading) return <Loading className={"relative min-h-screen"} />;
-  if (error) return <p>Error :(</p>;
+  // Error state
+  if (error) return <p className="text-red-500">Error fetching events. Please try again later.</p>;
 
-  console.log(data);
-
-  const Data = GenerateData(props.count);
-
-  if (data?.event?.length === 0)
+  const events = data?.event || [];
+  
+  // No events found
+  if (events.length === 0) {
     return <p className="my-10 text-gray-400">No events found</p>;
-  const sortedEvents=[...data.event].sort((a, b) => new Date(b?.date) - new Date(a?.date));
+  }
+
+  // Sort events by date
+  const sortedEvents = [...events].sort((a, b) => new Date(b?.date) - new Date(a?.date));
+
   return (
-    <div className="font-body">
-      <VerticalTimeline lineColor="rgb(107 114 128)" animate="true">
-        {sortedEvents.map((item, index) => (
+    <div className="font-body relative">
+      <VerticalTimeline lineColor="rgb(107 114 128)" animate={true} layout="2-columns">
+        {sortedEvents.map((item, index) => {
+          const styleler = index%2 ===0 ? contentStyle1:contentStyle2;
+          return(
           <VerticalTimelineElement
+            key={index}
             className="vertical-timeline-element--work"
-            contentStyle={{
-              ...contentStyle,
-              boxShadow: "0px 10px 20px 0px rgba(0,0,0,0.1)",
-            }}
-            contentArrowStyle={{ borderRight: "7px solid  #fff" }}
+            contentStyle={styleler}
+            contentArrowStyle={{ borderRight: "7px solid #898a8d"  }}
             date={`${dayjs(item?.date).date()}${getOrdinalSuffix(dayjs(item?.date).date())} ${dayjs(item?.date).format('MMMM YYYY')}`}
-            iconStyle={{ background: "#fff", color: "#000" }}
+            // iconStyle={{ background: "#000", color: "#1f2937" , borderRadius:"100%" }}
             icon={
               <img
                 src={item?.coverPhoto?.url}
-                className="rounded-full h-full w-full object-cover  hover:rotate-6 transition-all"
+                className="rounded-full h-full w-full object-cover hover:rotate-6 transition-all"
                 alt="avatar"
               />
             }
           >
-            <h2>{item?.title}</h2>
-            <p>
-            <pre className="text-wrap font-sans text-gray-800 text-base">
-              {item?.excerpt}
-            </pre>
-            </p>
-            <div className="w-full flex justify-between mt-9">
-              <div className="self-end text-sm px-4 font-extralight py-2 bg-black text-white rounded-full">
+            <h2 className="vertical-timeline-element-title">{item?.title}</h2>
+      
+              <pre className="text-wrap font-sans text-gray-800 text-base">
+                {item?.excerpt}
+              </pre>
+            
+            <div className="w-full flex justify-center items-center mt-9 ">
+              {/* <div className="date-badge">
                 {item?.date}
-              </div>
-              {props.type=="UPCOMING" && <button className="px-3 rounded-full text-white bg-gray-900 font-light hover:scale-110 hover:font-medium hover:bg-blue-900 transition-all ease-out duration-300" onClick={() => window.open(item?.link)}>
-                Apply Now!
-              </button>}
+              </div> */}
+              {type === "UPCOMING" && (
+                <button
+                  className="apply-button "
+                  onClick={() => window.open(item?.link)}
+                >
+                  Apply Now!
+                </button>
+              )}
             </div>
           </VerticalTimelineElement>
-        ))}
+        )})}
       </VerticalTimeline>
     </div>
   );
-}
+};
 
 export default EventsTimeline;

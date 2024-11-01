@@ -6,8 +6,8 @@ function TeamLoading(props) {
     <React.Fragment>
       {Array(props.count)
         .fill(0)
-        .map(() => (
-          <Card className={props.className} />
+        .map((item,index) => (
+          <Card className={props.className} key ={index} />
         ))}
     </React.Fragment>
   );

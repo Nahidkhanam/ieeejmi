@@ -32,6 +32,17 @@ function Teams() {
     }
   }, [data]);
 
+
+  const handleSlideChange = (swiper) => {
+    const teamNameIndex = (swiper.realIndex + teamNames.length) % teamNames.length;
+    const teamName = teamNames[teamNameIndex]?.name;
+
+    if (teamName) {
+      setCurrentTeam(teamName);
+    } else {
+      setCurrentTeam(teamNames[0]?.name);
+    }
+  };
   return (
     <div className="font-body pt-28 flex flex-col justify-center items-center">
       <div className="">
@@ -47,65 +58,36 @@ function Teams() {
           width: "90vw",
         }}
       >
-        <Swiper
-          spaceBetween={50}
-          slidesPerView={isTabletOrMobile ? 1 : 3}
-          navigation={true}
-          centeredSlides={true}
-          loop={true}
-          // pagination={{ clickable: true }}
-          modules={[Navigation]}
-          onSlideChange={(swiper) => {
-            if (true) {
-              setCurrentTeam(
-                teamNames[
-                  (swiper.realIndex + teamNames.length) % teamNames.length
-                ]?.name
-              );
-            } else if (swiper.clickedSlide) {
-              setCurrentTeam(
-                swiper.clickedSlide.children[0].innerHTML
-                  .replace("Team", "")
-                  .trim()
-                  .replace(" ", "_")
-              );
-            } else {
-              // Set currentTeam based on the active slide index as a fallback
-              setCurrentTeam(
-                /*teamNames[
-                  (swiper.activeIndex - 1 + teamNames.length) % teamNames.length
-                ]?.name*/
-                teamNames[0]?.name
-              );
-              console.log("fallback", teamNames[
-                (swiper.activeIndex - 1 + teamNames.length) % teamNames.length
-              ]?.name);
-            }
-            console.log(swiper.realIndex);
-          }}
-          onSwiper={(swiper) => console.log(swiper)}
-          slideToClickedSlide={false}
-        >
-          {loading
-            ? Array(8)
-                .fill(0)
-                .map((item, index) => (
-                  <SwiperSlide className="text-center p-5 px-14">
-                    <div className="p-6 header-team-list">
-                      <Skeleton height={50} width={200} />
-                    </div>
-                  </SwiperSlide>
-                ))
-            : teamNames.map((item, index) => {
-                return (
-                  <SwiperSlide className="text-center p-5 px-14" key={index}>
-                    <div className="p-6 header-team-list">
-                      {item.name.slice().replace("_", " ")} Team
-                    </div>
-                  </SwiperSlide>
-                );
-              })}
-        </Swiper>
+         <Swiper
+      spaceBetween={50}
+      slidesPerView={isTabletOrMobile ? 1 : 3}
+      navigation
+      centeredSlides
+      loop
+      modules={[Navigation]}
+      onSlideChange={handleSlideChange}
+      onSwiper={(swiper) => console.log({swiper})}
+      slideToClickedSlide={false}
+    >
+      {loading ? (
+        Array.from({ length: 8 }).map((_, index) => (
+          <SwiperSlide className="text-center p-5 px-14" key={index}>
+            <div className="p-6 header-team-list">
+              <Skeleton height={50} width={200} />
+            </div>
+          </SwiperSlide>
+        ))
+      ) : (
+        teamNames.map((item, index) => (
+          <SwiperSlide className="text-center p-5 px-14" key={index}>
+            <div className="p-6 header-team-list">
+              {item.name.replace("_", " ")} Team
+            </div>
+          </SwiperSlide>
+        ))
+      )}
+    </Swiper>
+  );
       </div>
       {currentTeam ? (
         <div className="w-full flex flex-col justify-center items-center">

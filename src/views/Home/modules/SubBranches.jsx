@@ -25,8 +25,8 @@ function SubBranches() {
         <img className="mx-2" src={HeadRight} alt="" />
       </h3>
       <div className="shrink m-auto max-w-sm grid grid-cols-2 gap-10">
-        {logos.map((logo)=>(
-          <div className="p-2 flex flex-col justify-between">
+        {logos.map((logo,index)=>(
+          <div className="p-2 flex flex-col justify-between" key={index}>
           <img
             src={logo.src}
             alt={logo.alt}

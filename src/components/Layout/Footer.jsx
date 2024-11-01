@@ -13,9 +13,10 @@ function Footer() {
       <div className="md:w-1/4">
         <ul className="flex flex-col text-center md:text-left my-3 md:my-0">
           {route.map((item, index) => (
-            <li>
+            <li key={index}>
               <NavLink
                 to={item.path}
+                key={index}
                 className="mx-3 md:font-semibold text-black/60 md:text-black/40 hover:text-black hover:text-lg transition-all"
               >
                 {item.text}
