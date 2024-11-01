@@ -27,7 +27,7 @@ const EventsTimeline = ({type}) => {
   };
 
   const contentStyle2 = {
-    background: "linear-gradient(135deg,#f598a6, #F6EA7BFF, #f10080)",
+    background: "linear-gradient(135deg,#f598a6, #F6EA7BFF, #ff8bc9)",
     color: "#1f2937",
     borderRadius: "10px",
   };
